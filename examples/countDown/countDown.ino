@@ -21,9 +21,9 @@ void setup()
         delay(1000);
     }
     #if defined(ESP32)||defined(ARDUINO_SAM_ZERO)
-      attachInterrupt(digitalPinToInterrupt(D7)/*Query the interrupt number of the D6 pin*/,interrupt,FALLING);
+      attachInterrupt(digitalPinToInterrupt(27)/*Query the interrupt number of the D6 pin*/,interrupt,FALLING);
     #elif defined(ESP8266)
-      attachInterrupt(digitalPinToInterrupt(D5)/*Query the interrupt number of the D6 pin*/,interrupt,FALLING);
+      attachInterrupt(digitalPinToInterrupt(14)/*Query the interrupt number of the D5 pin (GPIO14)*/,interrupt,FALLING);
     #else
     /*    The Correspondence Table of AVR Series Arduino Interrupt Pins And Terminal Numbers
     * ---------------------------------------------------------------------------------------
