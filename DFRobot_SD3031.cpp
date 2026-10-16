@@ -357,7 +357,7 @@ void DFRobot_SD3031::enableFrequency(eFrequency_t fr)
   uint8_t reg2,reg3;
   readReg(SD3031_REG_CTR2, &reg2, 1);
   readReg(SD3031_REG_CTR3, &reg3, 1);
-  reg2 |= 0x90; // Set Bit 7 (Oscillator Enable) and Bit 4 (SQW Enable)
+  reg2 = 0xEF; // Set CTR2 to enable oscillator and square wave output
   reg3 = reg3 | fr;
   writeReg(SD3031_REG_CTR2, &reg2, 1);
   writeReg(SD3031_REG_CTR3, &reg3, 1);
@@ -367,7 +367,7 @@ void DFRobot_SD3031::enableFrequency(eFrequency_t fr)
 void DFRobot_SD3031::disableFrequency(void){
   uint8_t reg2;
   readReg(SD3031_REG_CTR2, &reg2, 1);
-  reg2 = reg2 & 0xFE;
+  reg2 = reg2 & 0xDF; // Clear Bit 5 (SQW Enable)
   writeReg(SD3031_REG_CTR2, &reg2, 1);
 }
 
