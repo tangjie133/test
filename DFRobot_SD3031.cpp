@@ -367,7 +367,7 @@ void DFRobot_SD3031::enableFrequency(eFrequency_t fr)
 void DFRobot_SD3031::disableFrequency(void){
   uint8_t reg2;
   readReg(SD3031_REG_CTR2, &reg2, 1);
-  reg2 = reg2 & 0xFE;
+  reg2 = reg2 & 0xFD; // Clear SQW bit (bit1)
   writeReg(SD3031_REG_CTR2, &reg2, 1);
 }
 
