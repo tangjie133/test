@@ -30,9 +30,9 @@ void setup()
     rtc.setAlarm(rtc.eEveryDay,0,0,0);//Set daily regular alarm
 
     #if defined(ESP32)||defined(ARDUINO_SAM_ZERO)
-      attachInterrupt(digitalPinToInterrupt(D7)/*Query the interrupt number of the D6 pin*/,interrupt,FALLING);
+      attachInterrupt(digitalPinToInterrupt(25)/*Query the interrupt number of the D6 pin (D6 = GPIO25 on ESP32)*/,interrupt,FALLING);
     #elif defined(ESP8266)
-      attachInterrupt(digitalPinToInterrupt(D5)/*Query the interrupt number of the D6 pin*/,interrupt,FALLING);
+      attachInterrupt(digitalPinToInterrupt(14)/*Query the interrupt number of the D6 pin (D5 = GPIO14 on ESP8266)*/,interrupt,FALLING);
     #else
     /*    The Correspondence Table of AVR Series Arduino Interrupt Pins And Terminal Numbers
     * ---------------------------------------------------------------------------------------
